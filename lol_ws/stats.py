@@ -1,9 +1,13 @@
+# 나무위키 : https://namu.wiki/w/%EB%A6%AC%EA%B7%B8%20%EC%98%A4%EB%B8%8C%20%EB%A0%88%EC%A0%84%EB%93%9C/%EC%B1%94%ED%94%BC%EC%96%B8/%EB%8A%A5%EB%A0%A5%EC%B9%98
 from dataclasses import dataclass, field
 
 @dataclass
 class LevelStats:
     level: int = 1
     experience: float = 0.0
+
+    def experience_required_for_each_level(self):
+        return 180 + 100*self.level
 
 @dataclass
 class HealthStats:
@@ -66,20 +70,36 @@ class OtherStats:
     heal_and_shield_power: float = 0.0
 
 @dataclass
-class CharacterStats:
-    level_stats: LevelStats = field(default_factory=LevelStats)
-    resource_stats: ResourceStats = field(default_factory=ResourceStats)
-    attack_stats: AttackStats = field(default_factory=AttackStats)
-    defense_stats: DefenseStats = field(default_factory=DefenseStats)
-    speed_stats: SpeedStats = field(default_factory=SpeedStats)
-    critical_stats: CriticalStats = field(default_factory=CriticalStats)
-    penetration_stats: PenetrationStats = field(default_factory=PenetrationStats)
-    vamp_stats: VampStats = field(default_factory=VampStats)
-    other_stats: OtherStats = field(default_factory=OtherStats)
+class CharacterStats(
+        LevelStats,
+        ResourceStats,
+        AttackStats,
+        DefenseStats,
+        SpeedStats,
+        CriticalStats,
+        PenetrationStats,
+        VampStats,
+        OtherStats,
+    ):
+    pass
+    # level_stats: LevelStats = field(default_factory=LevelStats)
+    # resource_stats: ResourceStats = field(default_factory=ResourceStats)
+    # attack_stats: AttackStats = field(default_factory=AttackStats)
+    # defense_stats: DefenseStats = field(default_factory=DefenseStats)
+    # speed_stats: SpeedStats = field(default_factory=SpeedStats)
+    # critical_stats: CriticalStats = field(default_factory=CriticalStats)
+    # penetration_stats: PenetrationStats = field(default_factory=PenetrationStats)
+    # vamp_stats: VampStats = field(default_factory=VampStats)
+    # other_stats: OtherStats = field(default_factory=OtherStats)
+
+    # def experience_required_for_each_level(self, level:int =None):
+    #     level = level if None else self.level_stats.level
+    #     return 180 + 100*level
 
 if __name__ == '__main__':
     levelstats = LevelStats(8, 99)
     level = LevelStats(experience=100)
-    leesin = CharacterStats(level_stats=levelstats)
+    leesin = CharacterStats(level=8, experience=100)
 
     print(leesin)
+    print(leesin.experience_required_for_each_level())
