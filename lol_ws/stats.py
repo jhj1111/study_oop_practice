@@ -76,3 +76,10 @@ class CharacterStats:
     penetration_stats: PenetrationStats = field(default_factory=PenetrationStats)
     vamp_stats: VampStats = field(default_factory=VampStats)
     other_stats: OtherStats = field(default_factory=OtherStats)
+
+if __name__ == '__main__':
+    levelstats = LevelStats(8, 99)
+    level = LevelStats(experience=100)
+    leesin = CharacterStats(level_stats=levelstats)
+
+    print(leesin)
