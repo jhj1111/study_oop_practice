@@ -18,6 +18,7 @@ class Character(CharacterStats):
             self.attack = AttackStats(**champ_data["attack_stats"])
             self.defense = DefenseStats(**champ_data.get("defense_stats", {}))
             self.speed = SpeedStats(**champ_data["speed_stats"])
+            break
         else: 
             print('정보 없음. 혹은 오타 확인')
 
