@@ -13,12 +13,14 @@ class LevelStats:
 class HealthStats:
     max_health: float = 100.0
     current_health: float = 100.0
+    growth_rate: float = 1.0    # 성장수치
     regeneration: float = 5.0
 
 @dataclass
 class ManaStats:
     max_mana: float = 100.0
     current_mana: float = 100.0
+    growth_rate: float = 1.0    # 성장수치
     regeneration: float = 3.0
 
 @dataclass
@@ -34,11 +36,14 @@ class AttackStats:
     attack_damage: float = 50.0
     ability_power: float = 0.0
     adaptive_force: float = 0.0
+    growth_rate: float = 1.0    # 성장수치
 
 @dataclass
 class DefenseStats:
     armor: float = 30.0
     magic_resistance: float = 30.0
+    armor_growth_rate: float = 1.0    # 방어력 성장수치
+    magic_resistance_growth_rate: float = 1.0    # 마방 성장수치
 
 @dataclass
 class SpeedStats:
