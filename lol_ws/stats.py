@@ -24,14 +24,6 @@ class ManaStats:
     regeneration: float = 3.0
 
 @dataclass
-class ResourceStats:
-    health: HealthStats = field(default_factory=HealthStats)
-    mana: ManaStats = field(default_factory=ManaStats)
-    other_resource: float = 0.0
-    resource_type: str = "mana"  # 혹은 "none", "energy", "fury" 등
-    has_resource: bool = True
-
-@dataclass
 class AttackStats:
     attack_damage: float = 50.0
     ability_power: float = 0.0
@@ -69,6 +61,16 @@ class VampStats:
     spell_vamp: float = 0.0
 
 @dataclass
+class ResourceStats:
+    health: HealthStats = field(default_factory=HealthStats)
+    mana: ManaStats = field(default_factory=ManaStats)
+    attack: AttackStats = field(default=AttackStats)
+    defense: DefenseStats = field(default_factory=DefenseStats)
+    other_resource: float = 0.0
+    resource_type: str = "mana"  # 혹은 "none", "energy", "fury" 등
+    has_resource: bool = True
+
+@dataclass
 class OtherStats:
     range: float = 550.0
     tenacity: float = 0.0
@@ -78,8 +80,6 @@ class OtherStats:
 class CharacterStats(
         LevelStats,
         ResourceStats,
-        AttackStats,
-        DefenseStats,
         SpeedStats,
         CriticalStats,
         PenetrationStats,
