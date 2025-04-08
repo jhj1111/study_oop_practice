@@ -52,6 +52,7 @@ champions:
       magic_resistance_growth_rate: 2.0
     speed_stats:
       attack_speed: 0.638
+      ability_haste: 0.0
       movement_speed: 335
       attack_speed_growth_rate: 3.4
     # 크리티컬
