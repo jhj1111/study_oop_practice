@@ -1,6 +1,6 @@
 champions:
   - name: Ahri
-    class: Mage
+    class_group: Mage
     health_stats:
       max_health: 570
       current_health: 570
@@ -17,7 +17,7 @@ champions:
       movement_speed: 330
 
   - name: Garen
-    class: Warrior
+    class_group: Warrior
     health_stats:
       max_health: 620
       current_health: 620
@@ -31,7 +31,7 @@ champions:
       movement_speed: 340
 
   -name: malphite
-    class: Tanker
+    class_group: Tanker
     health_stats:
       max_health: 665
       current_health: 665
