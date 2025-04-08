@@ -1,0 +1,55 @@
+champions:
+  - name: Ahri
+    class: Mage
+    health_stats:
+      max_health: 570
+      current_health: 570
+      regeneration: 5.5
+    mana_stats:
+      max_mana: 418
+      current_mana: 418
+      regeneration: 8.0
+    attack_stats:
+      attack_damage: 53
+      ability_power: 60
+    speed_stats:
+      attack_speed: 0.668
+      movement_speed: 330
+
+  - name: Garen
+    class: Warrior
+    health_stats:
+      max_health: 620
+      current_health: 620
+      regeneration: 8.0
+    mana_stats: {}  # 무자원
+    attack_stats:
+      attack_damage: 66
+      ability_power: 0
+    speed_stats:
+      attack_speed: 0.625
+      movement_speed: 340
+
+  -name: malphite
+    class: Tanker
+    health_stats:
+      max_health: 665
+      current_health: 665
+      growth_rate: 104.0
+      regeneration: 5.0
+    mana_stats:
+      max_mana: 282
+      current_mana: 282
+      growth_rate: 40.0
+      regeneration: 5.0
+    attack_stats:
+      attack_damage: 64
+      growth_rate: 4.0
+    defense_stats:
+      armor: 37.0
+      magic_resistance: 28.0
+      armor_growth_rate: 4.0
+      magic_resistance_growth_rate: 2.0
+    speed_stats:
+      attack_speed: 0.638
+      movement_speed: 335
