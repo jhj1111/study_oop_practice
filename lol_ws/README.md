@@ -1,7 +1,5 @@
-Stats
-├── SpeedStats
-Character
-├── Fighter
-├── Mage
-├── Tanker
-│   └── Malphite
+```mermaid
+flowchart TB
+    Stats --> Character --> Fighter & Mage & Tanker
+    Tanker --> Malphite
+```
