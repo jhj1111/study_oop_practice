@@ -1,6 +1,10 @@
 # 나무위키 : https://namu.wiki/w/%EB%A6%AC%EA%B7%B8%20%EC%98%A4%EB%B8%8C%20%EB%A0%88%EC%A0%84%EB%93%9C/%EC%B1%94%ED%94%BC%EC%96%B8/%EC%97%AD%ED%95%A0%EA%B5%B0
 from stats import *
-import json, yaml
+import json, yaml, os
+
+# 현재 파이썬 파일 위치 기준으로 상대 경로 설정
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CONFIG_PATH = os.path.join(BASE_DIR, "config")
 
 class Character(CharacterStats):
     def __init__(self, name: str=None):
@@ -22,7 +26,7 @@ class Character(CharacterStats):
         else: 
             print('정보 없음. 혹은 오타 확인')
 
-    def load_champion_stats(self, filepath: str='lol_ws/character.yaml') -> list:
+    def load_champion_stats(self, filepath: str=os.path.join(CONFIG_PATH, 'character.yaml')) -> list:
         if filepath.endswith('.json'):
             with open(filepath, 'r', encoding='utf-8') as f:
                 data = json.load(f)
@@ -93,3 +97,4 @@ if __name__ == '__main__':
     leesin.healing_hp()
     print(f"leesin's hp after healing = {leesin.health.current_health}")
     print(repr(leesin))
+    print(leesin.crit_chance)
