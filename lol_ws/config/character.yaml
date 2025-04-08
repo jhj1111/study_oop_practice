@@ -1,0 +1,71 @@
+champions:
+  - name: Ahri
+    class_group: Mage
+    health_stats:
+      max_health: 570
+      current_health: 570
+      regeneration: 5.5
+    mana_stats:
+      max_mana: 418
+      current_mana: 418
+      regeneration: 8.0
+    attack_stats:
+      attack_damage: 53
+      ability_power: 60
+    speed_stats:
+      attack_speed: 0.668
+      movement_speed: 330
+
+  - name: Garen
+    class_group: Warrior
+    health_stats:
+      max_health: 620
+      current_health: 620
+      regeneration: 8.0
+    mana_stats: {}  # 무자원
+    attack_stats:
+      attack_damage: 66
+      ability_power: 0
+    speed_stats:
+      attack_speed: 0.625
+      movement_speed: 340
+
+  - name: malphite
+    class_group: Tanker
+    health_stats:
+      max_health: 665
+      current_health: 665
+      growth_rate: 104.0
+      regeneration: 5.0
+    mana_stats:
+      max_mana: 282
+      current_mana: 282
+      growth_rate: 40.0
+      regeneration: 5.0
+    attack_stats:
+      attack_damage: 64
+      growth_rate: 4.0
+    defense_stats:
+      armor: 37.0
+      magic_resistance: 28.0
+      armor_growth_rate: 4.0
+      magic_resistance_growth_rate: 2.0
+    speed_stats:
+      attack_speed: 0.638
+      movement_speed: 335
+      attack_speed_growth_rate: 3.4
+    # 크리티컬
+    crit_chance: 0.0
+    crit_damage: 0.0
+    # 관통력
+    armor_penetration: 0.0
+    magic_penetration: 0.0
+    # 흡혈
+    life_steal: 0.0  # 생명력 흡수
+    physical_vamp: 0.0 # 물리 피해 흡혈
+    omnivamp: 0.0  # 모든 피해 흡혈
+    spell_vamp: 0.0  # 주문 흡혈
+    # 기타
+    range: 125    # 사거리
+    tenacity: 0.0   # 강인함
+    heal_and_shield_power: 0.0  # 회복 및 보호막 효과

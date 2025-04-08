@@ -42,6 +42,7 @@ class SpeedStats:
     attack_speed: float = 0.7
     ability_haste: float = 0.0
     movement_speed: float = 325.0
+    attack_speed_growth_rate: float = 0.0
 
 @dataclass
 class CriticalStats:
@@ -54,11 +55,11 @@ class PenetrationStats:
     magic_penetration: float = 0.0
 
 @dataclass
-class VampStats:
-    life_steal: float = 0.0
-    physical_vamp: float = 0.0
-    omnivamp: float = 0.0
-    spell_vamp: float = 0.0
+class VampStats:    # 흡혈
+    life_steal: float = 0.0 # 생명력 흡수
+    physical_vamp: float = 0.0  # 물리 피해 흡혈
+    omnivamp: float = 0.0   # 모든 피해 흡혈
+    spell_vamp: float = 0.0# 주문 흡혈
 
 @dataclass
 class ResourceStats:
@@ -72,9 +73,9 @@ class ResourceStats:
 
 @dataclass
 class OtherStats:
-    range: float = 550.0
-    tenacity: float = 0.0
-    heal_and_shield_power: float = 0.0
+    range: float = 550.0    # 사거리
+    tenacity: float = 0.0   # 강인함
+    heal_and_shield_power: float = 0.0  # 회복 및 보호막 효과
 
 @dataclass
 class CharacterStats(
