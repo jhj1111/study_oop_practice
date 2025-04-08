@@ -1,10 +1,37 @@
 # 나무위키 : https://namu.wiki/w/%EB%A6%AC%EA%B7%B8%20%EC%98%A4%EB%B8%8C%20%EB%A0%88%EC%A0%84%EB%93%9C/%EC%B1%94%ED%94%BC%EC%96%B8/%EC%97%AD%ED%95%A0%EA%B5%B0
-from stats import CharacterStats
+from stats import *
 import json, yaml
 
 class Character(CharacterStats):
-    def __init__(self):
+    def __init__(self, name: str=None):
         super().__init__()
+        self.name = name    # 챔피언 이름
+
+        data = self.load_champion_stats()
+        for champ_data in data.get('champions', []):
+            name_data = champ_data.get('name')
+            if name_data != self.name:
+                continue
+            # 데이터 일시 시
+            self.health = HealthStats(**champ_data["health_stats"])
+            self.mana = ManaStats(**champ_data.get("mana_stats", {}))
+            self.attack = AttackStats(**champ_data["attack_stats"])
+            self.defense = DefenseStats(**champ_data.get("defense_stats", {}))
+            self.speed = SpeedStats(**champ_data["speed_stats"])
+        else: 
+            print('정보 없음. 혹은 오타 확인')
+
+    def load_champion_stats(self, filepath: str='lol_ws/character.yaml') -> list:
+        if filepath.endswith('.json'):
+            with open(filepath, 'r', encoding='utf-8') as f:
+                data = json.load(f)
+        elif filepath.endswith('.yaml') or filepath.endswith('.yml'):
+            with open(filepath, 'r', encoding='utf-8') as f:
+                data = yaml.safe_load(f)
+        else:
+            raise ValueError("지원하지 않는 파일 형식입니다.")
+        
+        return data
 
     def healing_hp(self, hp_regeneration:float = None):
         current_health = self.health.current_health
@@ -31,31 +58,35 @@ class Character(CharacterStats):
         self.mana.current_mana = current_mp
 
 class Fighter(Character):
-    def __init__(self, class_group: str='fighter'):
-        super().__init__()
+    def __init__(self, name: str=None, class_group: str='fighter'):
+        super().__init__(name=name)
+        self.name = name
         self.class_group = class_group
     
     def __repr__(self):
         return f"{self.class_group} class"
 
 class Mage(Character):
-    def __init__(self, class_group: str='mage'):
-        super().__init__()
+    def __init__(self, name: str=None, class_group: str='mage'):
+        super().__init__(name=name)
+        self.name = name
         self.class_group = class_group
 
     def __repr__(self):
         return f"{self.class_group} class"
     
 class Tanker(Character):
-    def __init__(self, class_group: str='tanker'):
-        super().__init__()
+    def __init__(self, name: str=None, class_group: str='tanker'):
+        super().__init__(name=name)
+        self.name = name
         self.class_group = class_group
 
     def __repr__(self):
         return f"{self.class_group} class"
 
 if __name__ == '__main__':
-    leesin = Fighter()
+    leesin = Fighter('leesin')
+    print(f"name = {leesin.name}")
     print(f"leesin's class is {leesin.class_group}")
     print(f"leesin's current hp is {leesin.health.current_health}")
     leesin.healing_hp()
