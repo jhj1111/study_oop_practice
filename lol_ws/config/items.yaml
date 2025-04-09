@@ -1,6 +1,6 @@
 items:
   - name: dance_of_death
-    cost: 3300
+    total_cost: 3300
     health_stats:
       max_health: {}
       current_health: {}
@@ -17,20 +17,128 @@ items:
       magic_resistance: {}
     speed_stats:
       attack_speed: {}
-      ability_haste: 15.0
+      ability_haste: 15.0 # 스킬가속
       movement_speed: {}
-    # 크리티컬
-    crit_chance: {}
-    crit_damage: {}
-    # 관통력
-    armor_penetration: {}
-    magic_penetration: {}
-    # 흡혈
-    life_steal: {}  # 생명력 흡수
-    physical_vamp: {} # 물리 피해 흡혈
-    omnivamp: {}  # 모든 피해 흡혈
-    spell_vamp: {}  # 주문 흡혈
-    # 기타
-    range: {}    # 사거리
-    tenacity: {}   # 강인함
-    heal_and_shield_power: {}  # 회복 및 보호막 효과
+    critical_stats:
+      crit_chance: {}
+      crit_damage: {}
+    penetration_stats:
+      armor_penetration: {}
+      magic_penetration: {}
+    vamp_stats:
+      life_steal: {}  # 생명력 흡수
+      physical_vamp: {} # 물리 피해 흡혈
+      omnivamp: {}  # 모든 피해 흡혈
+      spell_vamp: {}  # 주문 흡혈
+    other_stats:
+      range: {}    # 사거리
+      tenacity: {}   # 강인함
+      heal_and_shield_power: {}  # 회복 및 보호막 효과
+
+  - name: pickaxe # 곡굉이
+    total_cost: 875
+    health_stats:
+      max_health: {}
+      current_health: {}
+      growth_rate: {}
+      regeneration: {}
+    mana_stats:
+      max_mana: {}
+      current_mana: {}
+      regeneration: {}
+    attack_stats:
+      attack_damage: 25
+    defense_stats:
+      armor: {}
+      magic_resistance: {}
+    speed_stats:
+      attack_speed: {}
+      ability_haste: {}
+      movement_speed: {}
+    critical_stats:
+      crit_chance: {}
+      crit_damage: {}
+    penetration_stats:
+      armor_penetration: {}
+      magic_penetration: {}
+    vamp_stats:
+      life_steal: {}  # 생명력 흡수
+      physical_vamp: {} # 물리 피해 흡혈
+      omnivamp: {}  # 모든 피해 흡혈
+      spell_vamp: {}  # 주문 흡혈
+    other_stats:
+      range: {}    # 사거리
+      tenacity: {}   # 강인함
+      heal_and_shield_power: {}  # 회복 및 보호막 효과
+
+  - name: steel_sigil # 강철 인장
+    total_cost: 1100
+    health_stats:
+      max_health: {}
+      current_health: {}
+      growth_rate: {}
+      regeneration: {}
+    mana_stats:
+      max_mana: {}
+      current_mana: {}
+      regeneration: {}
+    attack_stats:
+      attack_damage: 15
+    defense_stats:
+      armor: 30
+      magic_resistance: {}
+    speed_stats:
+      attack_speed: {}
+      ability_haste: {} # 스킬가속
+      movement_speed: {}
+    critical_stats:
+      crit_chance: {}
+      crit_damage: {}
+    penetration_stats:
+      armor_penetration: {}
+      magic_penetration: {}
+    vamp_stats:
+      life_steal: {}  # 생명력 흡수
+      physical_vamp: {} # 물리 피해 흡혈
+      omnivamp: {}  # 모든 피해 흡혈
+      spell_vamp: {}  # 주문 흡혈
+    other_stats:
+      range: {}    # 사거리
+      tenacity: {}   # 강인함
+      heal_and_shield_power: {}  # 회복 및 보호막 효과
+
+  - name: caulfield_warhammer # 콜필드
+    total_cost: 1050
+    health_stats:
+      max_health: {}
+      current_health: {}
+      growth_rate: {}
+      regeneration: {}
+    mana_stats:
+      max_mana: {}
+      current_mana: {}
+      regeneration: {}
+    attack_stats:
+      attack_damage: 20
+    defense_stats:
+      armor: {}
+      magic_resistance: {}
+    speed_stats:
+      attack_speed: {}
+      ability_haste: 10 # 스킬가속
+      movement_speed: {}
+    critical_stats:
+      crit_chance: {}
+      crit_damage: {}
+    penetration_stats:
+      armor_penetration: {}
+      magic_penetration: {}
+    vamp_stats:
+      life_steal: {}  # 생명력 흡수
+      physical_vamp: {} # 물리 피해 흡혈
+      omnivamp: {}  # 모든 피해 흡혈
+      spell_vamp: {}  # 주문 흡혈
+    other_stats:
+      range: {}    # 사거리
+      tenacity: {}   # 강인함
+      heal_and_shield_power: {}  # 회복 및 보호막 효과

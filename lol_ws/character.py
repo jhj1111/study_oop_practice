@@ -1,5 +1,6 @@
 # 나무위키 : https://namu.wiki/w/%EB%A6%AC%EA%B7%B8%20%EC%98%A4%EB%B8%8C%20%EB%A0%88%EC%A0%84%EB%93%9C/%EC%B1%94%ED%94%BC%EC%96%B8/%EC%97%AD%ED%95%A0%EA%B5%B0
 from stats import *
+from utils import information
 import json, yaml, os
 
 # 현재 파이썬 파일 위치 기준으로 상대 경로 설정
@@ -10,33 +11,7 @@ class Character(CharacterStats):
     def __init__(self, name: str=None):
         super().__init__()
         self.name = name    # 챔피언 이름
-
-        data = self.load_champion_stats()
-        for champ_data in data.get('champions', []):
-            name_data = champ_data.get('name')
-            if name_data != self.name:
-                continue
-            # 데이터 일시 시
-            self.health = HealthStats(**champ_data["health_stats"])
-            self.mana = ManaStats(**champ_data.get("mana_stats", {}))
-            self.attack = AttackStats(**champ_data["attack_stats"])
-            self.defense = DefenseStats(**champ_data.get("defense_stats", {}))
-            self.speed = SpeedStats(**champ_data["speed_stats"])
-            break
-        else: 
-            print('정보 없음. 혹은 오타 확인')
-
-    def load_champion_stats(self, filepath: str=os.path.join(CONFIG_PATH, 'character.yaml')) -> list:
-        if filepath.endswith('.json'):
-            with open(filepath, 'r', encoding='utf-8') as f:
-                data = json.load(f)
-        elif filepath.endswith('.yaml') or filepath.endswith('.yml'):
-            with open(filepath, 'r', encoding='utf-8') as f:
-                data = yaml.safe_load(f)
-        else:
-            raise ValueError("지원하지 않는 파일 형식입니다.")
-        
-        return data
+        self.init_stats_from_config('character.yaml', 'champions')
 
     def healing_hp(self, hp_regeneration:float = None):
         current_health = self.health.current_health
@@ -97,4 +72,4 @@ if __name__ == '__main__':
     leesin.healing_hp()
     print(f"leesin's hp after healing = {leesin.health.current_health}")
     print(repr(leesin))
-    print(leesin.crit_chance)
+    print(leesin.critical.crit_chance)
