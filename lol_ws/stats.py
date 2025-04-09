@@ -1,5 +1,6 @@
 # 나무위키 : https://namu.wiki/w/%EB%A6%AC%EA%B7%B8%20%EC%98%A4%EB%B8%8C%20%EB%A0%88%EC%A0%84%EB%93%9C/%EC%B1%94%ED%94%BC%EC%96%B8/%EB%8A%A5%EB%A0%A5%EC%B9%98
 from dataclasses import dataclass, field
+from utils import information
 
 @dataclass
 class LevelStats:
@@ -78,29 +79,46 @@ class OtherStats:
     heal_and_shield_power: float = 0.0  # 회복 및 보호막 효과
 
 @dataclass
-class CharacterStats(
-        LevelStats,
-        ResourceStats,
-        SpeedStats,
-        CriticalStats,
-        PenetrationStats,
-        VampStats,
-        OtherStats,
-    ):
-    pass
-    # level_stats: LevelStats = field(default_factory=LevelStats)
-    # resource_stats: ResourceStats = field(default_factory=ResourceStats)
-    # attack_stats: AttackStats = field(default_factory=AttackStats)
-    # defense_stats: DefenseStats = field(default_factory=DefenseStats)
-    # speed_stats: SpeedStats = field(default_factory=SpeedStats)
-    # critical_stats: CriticalStats = field(default_factory=CriticalStats)
-    # penetration_stats: PenetrationStats = field(default_factory=PenetrationStats)
-    # vamp_stats: VampStats = field(default_factory=VampStats)
-    # other_stats: OtherStats = field(default_factory=OtherStats)
+class CharacterStats:
+    level: LevelStats = field(default_factory=LevelStats)
+    health: HealthStats = field(default_factory=HealthStats)
+    mana: ManaStats = field(default_factory=ManaStats)
+    attack: AttackStats = field(default=AttackStats)
+    defense: DefenseStats = field(default_factory=DefenseStats)
+    speed: SpeedStats = field(default_factory=SpeedStats)
+    critical: CriticalStats = field(default_factory=CriticalStats)
+    penetration: PenetrationStats = field(default_factory=PenetrationStats)
+    vamp: VampStats = field(default_factory=VampStats)
+    other: OtherStats = field(default_factory=OtherStats)
 
-    # def experience_required_for_each_level(self, level:int =None):
-    #     level = level if None else self.level_stats.level
-    #     return 180 + 100*level
+    def init_stats_from_config(self, file_name: str, class_name: str=None):
+        self.data = information.ConfigLoader().load_file_info(file_name)
+        class_name = file_name.split('.')[0] if class_name is None else class_name
+        for target_data in self.data.get(class_name):
+            try :
+                name_data = target_data['name']
+            except KeyError:
+                print("정보 없음")
+
+            if name_data != self.name:
+                continue
+            # 데이터 일치 시
+            self.health = HealthStats(**target_data["health_stats"])
+            self.mana = ManaStats(**target_data.get("mana_stats", {}))
+            self.attack = AttackStats(**target_data["attack_stats"])
+            self.defense = DefenseStats(**target_data.get("defense_stats", {}))
+            self.speed = SpeedStats(**target_data["speed_stats"])
+            self.critical = SpeedStats(**target_data["speed_stats"])
+            self.penetration = PenetrationStats(**target_data["penetration_stats"])
+            self.vamp = VampStats(**target_data["vamp_stats"])
+            self.other = OtherStats(**target_data["other_stats"])
+            break
+        else: 
+            print('정보 없음. 혹은 오타 확인')
+
+    def experience_required_for_each_level(self, level:int =None):
+        level = level if None else self.level_stats.level
+        return 180 + 100*level
 
 if __name__ == '__main__':
     levelstats = LevelStats(8, 99)
