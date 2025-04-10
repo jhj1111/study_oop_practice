@@ -93,6 +93,7 @@ class CharacterStats:
 
     def init_stats_from_config(self, file_name: str, class_name: str=None):
         self.data = information.ConfigLoader().load_file_info(file_name)
+
         class_name = file_name.split('.')[0] if class_name is None else class_name
         for target_data in self.data.get(class_name):
             try :

@@ -2,19 +2,60 @@ champions:
   - name: Ahri
     class_group: Mage
     health_stats:
-      max_health: 570
-      current_health: 570
-      regeneration: 5.5
+      max_health: 590.0
+      current_health: 590.0
+      growth_rate: 104.0
+      regeneration: 0.0
     mana_stats:
-      max_mana: 418
-      current_mana: 418
-      regeneration: 8.0
+      max_mana: 418.0
+      current_mana: 418.0
+      growth_rate: 25.0
+      regeneration: 5.0
     attack_stats:
-      attack_damage: 53
-      ability_power: 60
+      attack_damage: 53.0
+      growth_rate: 3.0
+    defense_stats:
+      armor: 21.0
+      magic_resistance: 30.0
+      armor_growth_rate: 4.0
+      magic_resistance_growth_rate: 1.0
     speed_stats:
       attack_speed: 0.668
+      ability_haste: 0.0
       movement_speed: 330
+      attack_speed_growth_rate: 1.9
+    critical_stats:
+      crit_chance: 0.0
+      crit_damage: 0.0
+    penetration_stats:
+      armor_penetration: 0.0
+      magic_penetration: 0.0
+    vamp_stats:
+      life_steal: 0.0  # 생명력 흡수
+      physical_vamp: 0.0 # 물리 피해 흡혈
+      omnivamp: 0.0  # 모든 피해 흡혈
+      spell_vamp: 0.0  # 주문 흡혈
+    other_stats:
+      range: 550    # 사거리
+      tenacity: 0.0   # 강인함
+      heal_and_shield_power: 0.0  # 회복 및 보호막 효과
+    skills:
+      q:
+        name: "혼의 결박 (Orb of Deception)"
+        base_damage: [40, 65, 90, 115, 140]
+        ap_ratio: 0.35   # 앞, 뒤 둘 다 0.35씩 들어감 → 총합은 0.7
+      w:
+        name: "여우불 (Fox-Fire)"
+        base_damage: [40, 65, 90, 115, 140]
+        ap_ratio: 0.3
+      e:
+        name: "매혹 (Charm)"
+        base_damage: [60, 95, 130, 165, 200]
+        ap_ratio: 0.6
+      r:
+        name: "혼령 질주 (Spirit Rush)"
+        base_damage: [60, 90, 120]
+        ap_ratio: 0.35   # 한 번 당 피해량, 최대 3번
 
   - name: Garen
     class_group: Warrior
@@ -56,6 +97,23 @@ champions:
       range: 175    # 사거리
       tenacity: 0.0   # 강인함
       heal_and_shield_power: 0.0  # 회복 및 보호막 효과
+    skills:
+      q:
+        name: "결정타 (Decisive Strike)"
+        base_damage: [30, 65, 100, 135, 170]
+        ad_ratio: 1.1
+      w:
+        name: "용기 (Courage)"
+        base_damage: [0, 0, 0, 0, 0]  # 피해는 없음, 방어력 버프용
+      e:
+        name: "심판 (Judgment)"
+        base_damage: [15, 18, 21, 24, 27]  # 한 번 회전 당
+        ad_ratio: 0.32
+        spin_count: 7  # 총 회전 수
+      r:
+        name: "데마시아의 정의 (Demacian Justice)"
+        base_damage: [150, 300, 450]
+        hp_ratio: 0.25  # 대상 잃은 체력에 비례한 추가 피해
 
   - name: malphite
     class_group: Tanker
@@ -97,3 +155,20 @@ champions:
       range: 125    # 사거리
       tenacity: 0.0   # 강인함
       heal_and_shield_power: 0.0  # 회복 및 보호막 효과
+    skills:
+      q:
+        name: "지진의 파편 (Seismic Shard)"
+        base_damage: [70, 120, 170, 220, 270]
+        ap_ratio: 0.6
+      w:
+        name: "천둥소리 (Thunderclap)"
+        base_damage: [20, 35, 50, 65, 80]
+        armor_ratio: 0.15
+      e:
+        name: "지면 강타 (Ground Slam)"
+        base_damage: [60, 95, 130, 165, 200]
+        armor_ratio: 0.3
+      r:
+        name: "멈출 수 없는 힘 (Unstoppable Force)"
+        base_damage: [200, 300, 400]
+        ap_ratio: 0.9
