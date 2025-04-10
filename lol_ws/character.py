@@ -81,21 +81,21 @@ class Character(CharacterStats):
         self.skills[skill_key]['level'] += 1
         return f"{self.name}의 {skill_key} 레벨 -> {self.skills[skill_key]['level']}"
     
-    def use_skill_to_targets(self, targets: list, skill_key: str):
-        '''
-        targets: 목표 챔피언 클래스
-        skill_key: q,w,e,r
-        '''
-        list_of_target_names = []
-        damage = skills.Skill().calculate_damage(self, skill_key)
+    # def use_skill_to_targets(self, targets: list, skill_key: str):
+    #     '''
+    #     targets: 목표 챔피언 클래스
+    #     skill_key: q,w,e,r
+    #     '''
+    #     list_of_target_names = []
+    #     damage = skills.Skill().calculate_damage(self, skill_key)
 
-        for target in targets:
-            target.health.current_health -= damage
-            list_of_target_names.append(target.name)
-        else:
-            return f"{self.name}가 {list_of_target_names}에게 {self.skills[skill_key]['name']} 사용 → {damage:.2f} 피해!"
+    #     for target in targets:
+    #         target.health.current_health -= damage
+    #         list_of_target_names.append(target.name)
+    #     else:
+    #         return f"{self.name}가 {list_of_target_names}에게 {self.skills[skill_key]['name']} 사용 → {damage:.2f} 피해!"
 
-        return f"{self.name}의 {self.skills[skill_key]['name']} 스킬 빗나감"
+    #     return f"{self.name}의 {self.skills[skill_key]['name']} 스킬 빗나감"
 
     def healing_hp(self, hp_regeneration:float = None):
         current_health = self.health.current_health

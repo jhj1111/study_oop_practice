@@ -1,5 +1,6 @@
 from champions import *
 from items import *
+from utils import skills
 
 if __name__ =='__main__':
     # malpha = Malphite()
@@ -12,9 +13,11 @@ if __name__ =='__main__':
     malpha.apply_item_stats(dod)
     print(garen.skills['q'])
     # print(malpha.skills['q'])
-    # print(malpha.use_skill_to_targets([], 'q'))
-    print(malpha.use_skill_to_targets([ahri, garen], 'q'))
     print(malpha.get_experience(300))
-    print(malpha.skill_level_up('q'))
-    print(malpha.use_skill_to_targets([ahri, garen], 'q'))
+    print(garen.skill_level_up('q'))
+    print(garen.skill_level_up('q'))
+    print(garen.skill_level_up('q'))
+    print(garen.skill_level_up('q'))
+    skills.Skill().use_skill_to_targets(malpha, [], 'q')
+    skills.Skill().use_skill_to_targets(garen, [ahri, garen, malpha], 'q')
     # print(malpha)

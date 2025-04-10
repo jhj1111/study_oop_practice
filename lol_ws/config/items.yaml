@@ -12,6 +12,7 @@ items:
       regeneration: {}
     attack_stats:
       attack_damage: 60.0
+      ability_power: 0.0
     defense_stats:
       armor: 50.0
       magic_resistance: {}
@@ -48,6 +49,7 @@ items:
       regeneration: {}
     attack_stats:
       attack_damage: 25
+      ability_power: 0.0
     defense_stats:
       armor: {}
       magic_resistance: {}
@@ -120,6 +122,7 @@ items:
       regeneration: {}
     attack_stats:
       attack_damage: 20
+      ability_power: 0.0
     defense_stats:
       armor: {}
       magic_resistance: {}
