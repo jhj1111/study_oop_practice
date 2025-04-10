@@ -32,7 +32,7 @@ class Item(CharacterStats):
             self.attack = AttackStats(**target_data["attack_stats"])
             self.defense = DefenseStats(**target_data.get("defense_stats", {}))
             self.speed = SpeedStats(**target_data["speed_stats"])
-            self.critical = SpeedStats(**target_data["speed_stats"])
+            self.critical = CriticalStats(**target_data["critical_stats"])
             self.penetration = PenetrationStats(**target_data["penetration_stats"])
             self.vamp = VampStats(**target_data["vamp_stats"])
             self.other = OtherStats(**target_data["other_stats"])

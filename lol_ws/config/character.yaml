@@ -19,16 +19,43 @@ champions:
   - name: Garen
     class_group: Warrior
     health_stats:
-      max_health: 620
-      current_health: 620
-      regeneration: 8.0
-    mana_stats: 0.0  # 무자원
+      max_health: 690.0
+      current_health: 690.0
+      growth_rate: 98.0
+      regeneration: 5.0
+    mana_stats:
+      max_mana: {}
+      current_mana: {}
+      growth_rate: {}
+      regeneration: {}
     attack_stats:
-      attack_damage: 66
-      ability_power: 0
+      attack_damage: 64
+      growth_rate: 4.0
+    defense_stats:
+      armor: 38.0
+      magic_resistance: 32.0
+      armor_growth_rate: 4.0
+      magic_resistance_growth_rate: 1.0
     speed_stats:
       attack_speed: 0.625
+      ability_haste: 0.0
       movement_speed: 340
+      attack_speed_growth_rate: 3.65
+    critical_stats:
+      crit_chance: 0.0
+      crit_damage: 0.0
+    penetration_stats:
+      armor_penetration: 0.0
+      magic_penetration: 0.0
+    vamp_stats:
+      life_steal: 0.0  # 생명력 흡수
+      physical_vamp: 0.0 # 물리 피해 흡혈
+      omnivamp: 0.0  # 모든 피해 흡혈
+      spell_vamp: 0.0  # 주문 흡혈
+    other_stats:
+      range: 175    # 사거리
+      tenacity: 0.0   # 강인함
+      heal_and_shield_power: 0.0  # 회복 및 보호막 효과
 
   - name: malphite
     class_group: Tanker

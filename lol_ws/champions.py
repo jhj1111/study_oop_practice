@@ -4,6 +4,7 @@ from character import Fighter, Mage, Tanker, Character
 class Malphite(Tanker):
     def __init__(self, name='malphite'):
         super().__init__(name=name)
+        self.name = name
 
     def passive(self):
         name = '화강암 방패 (Granite Shield)'

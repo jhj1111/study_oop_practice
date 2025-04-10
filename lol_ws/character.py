@@ -1,11 +1,7 @@
 # 나무위키 : https://namu.wiki/w/%EB%A6%AC%EA%B7%B8%20%EC%98%A4%EB%B8%8C%20%EB%A0%88%EC%A0%84%EB%93%9C/%EC%B1%94%ED%94%BC%EC%96%B8/%EC%97%AD%ED%95%A0%EA%B5%B0
 from stats import *
 from utils import information
-import json, yaml, os
-
-# 현재 파이썬 파일 위치 기준으로 상대 경로 설정
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-CONFIG_PATH = os.path.join(BASE_DIR, "config")
+from items import Item
 
 class Character(CharacterStats):
     def __init__(self, name: str=None):
@@ -37,6 +33,27 @@ class Character(CharacterStats):
         # 대입
         self.mana.current_mana = current_mp
 
+    def apply_item_stats(self, item: 'Item'):
+        """Item 객체의 모든 스탯을 현재 캐릭터에 더한다"""
+        stat_categories = [
+            "health", "mana", "attack", "defense", "speed",
+            "critical", "penetration", "vamp", "other"
+        ]
+
+        for category in stat_categories:
+            if not hasattr(self, category) or not hasattr(item, category):
+                continue
+            
+            target_stat = getattr(self, category)
+            item_stat = getattr(item, category)
+
+            for field_name in vars(target_stat):
+                item_value = getattr(item_stat, field_name, 0)
+                if not isinstance(item_value, (int, float)):
+                    continue
+                current_value = getattr(target_stat, field_name, 0)
+                setattr(target_stat, field_name, current_value + item_value)
+
 class Fighter(Character):
     def __init__(self, name: str=None, class_group: str='fighter'):
         super().__init__(name=name)
@@ -61,8 +78,8 @@ class Tanker(Character):
         self.name = name
         self.class_group = class_group
 
-    def __repr__(self):
-        return f"{self.class_group} class"
+    # def __repr__(self):
+    #     return f"{self.class_group} class"
 
 if __name__ == '__main__':
     leesin = Fighter('leesin')
